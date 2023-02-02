@@ -4,11 +4,11 @@ namespace DascoPlasticRecyclingApp.Models
 {
     public class AppDbContext: DbContext
     {
-        public DbSet<User> User { get; set; }
-        public DbSet<UserAccount> UserAccount { get; set; }
-        public DbSet<ContactType> ContactType { get; set; }
-        public DbSet<Contact> Contact { get; set; }
-        public DbSet<PlasticType> PlasticType { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<UserAccount> UserAccounts { get; set; }
+        public DbSet<ContactType> ContactTypes { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
+        public DbSet<PlasticType> PlasticTypes { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
