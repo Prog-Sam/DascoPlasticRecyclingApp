@@ -7,5 +7,7 @@
         public string? MiddleName { get; set; }
         public string Lastname { get; set; }
         public string Position { get; set; }
+        public ICollection<Contact> Contacts { get; set; }
+        public ICollection<UserAccount> UserAccounts { get; set; }
     }
 }
