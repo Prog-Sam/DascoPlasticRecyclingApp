@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DascoPlasticRecyclingApp.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230202120502_FirstMigration")]
+    [Migration("20230202142541_FirstMigration")]
     partial class FirstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -40,7 +40,7 @@ namespace DascoPlasticRecyclingApp.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Contact");
+                    b.ToTable("Contacts");
                 });
 
             modelBuilder.Entity("DascoPlasticRecyclingApp.Models.ContactType", b =>
@@ -55,7 +55,7 @@ namespace DascoPlasticRecyclingApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ContactType");
+                    b.ToTable("ContactTypes");
                 });
 
             modelBuilder.Entity("DascoPlasticRecyclingApp.Models.PlasticType", b =>
@@ -79,7 +79,7 @@ namespace DascoPlasticRecyclingApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("PlasticType");
+                    b.ToTable("PlasticTypes");
                 });
 
             modelBuilder.Entity("DascoPlasticRecyclingApp.Models.User", b =>
@@ -105,7 +105,7 @@ namespace DascoPlasticRecyclingApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("User");
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("DascoPlasticRecyclingApp.Models.UserAccount", b =>
@@ -132,7 +132,7 @@ namespace DascoPlasticRecyclingApp.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UserAccount");
+                    b.ToTable("UserAccounts");
                 });
 
             modelBuilder.Entity("DascoPlasticRecyclingApp.Models.Contact", b =>

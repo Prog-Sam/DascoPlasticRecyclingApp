@@ -8,7 +8,7 @@ namespace DascoPlasticRecyclingApp.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "ContactType",
+                name: "ContactTypes",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -17,11 +17,11 @@ namespace DascoPlasticRecyclingApp.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ContactType", x => x.Id);
+                    table.PrimaryKey("PK_ContactTypes", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "PlasticType",
+                name: "PlasticTypes",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -33,11 +33,11 @@ namespace DascoPlasticRecyclingApp.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PlasticType", x => x.Id);
+                    table.PrimaryKey("PK_PlasticTypes", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "User",
+                name: "Users",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -49,11 +49,11 @@ namespace DascoPlasticRecyclingApp.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_User", x => x.Id);
+                    table.PrimaryKey("PK_Users", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Contact",
+                name: "Contacts",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -64,23 +64,23 @@ namespace DascoPlasticRecyclingApp.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Contact", x => x.Id);
+                    table.PrimaryKey("PK_Contacts", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Contact_ContactType_ContactTypeId",
+                        name: "FK_Contacts_ContactTypes_ContactTypeId",
                         column: x => x.ContactTypeId,
-                        principalTable: "ContactType",
+                        principalTable: "ContactTypes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Contact_User_UserId",
+                        name: "FK_Contacts_Users_UserId",
                         column: x => x.UserId,
-                        principalTable: "User",
+                        principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "UserAccount",
+                name: "UserAccounts",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -92,47 +92,47 @@ namespace DascoPlasticRecyclingApp.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_UserAccount", x => x.Id);
+                    table.PrimaryKey("PK_UserAccounts", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_UserAccount_User_UserId",
+                        name: "FK_UserAccounts_Users_UserId",
                         column: x => x.UserId,
-                        principalTable: "User",
+                        principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Contact_ContactTypeId",
-                table: "Contact",
+                name: "IX_Contacts_ContactTypeId",
+                table: "Contacts",
                 column: "ContactTypeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Contact_UserId",
-                table: "Contact",
+                name: "IX_Contacts_UserId",
+                table: "Contacts",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_UserAccount_UserId",
-                table: "UserAccount",
+                name: "IX_UserAccounts_UserId",
+                table: "UserAccounts",
                 column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Contact");
+                name: "Contacts");
 
             migrationBuilder.DropTable(
-                name: "PlasticType");
+                name: "PlasticTypes");
 
             migrationBuilder.DropTable(
-                name: "UserAccount");
+                name: "UserAccounts");
 
             migrationBuilder.DropTable(
-                name: "ContactType");
+                name: "ContactTypes");
 
             migrationBuilder.DropTable(
-                name: "User");
+                name: "Users");
         }
     }
 }
