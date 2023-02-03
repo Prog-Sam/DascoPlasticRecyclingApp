@@ -9,6 +9,17 @@ namespace DascoPlasticRecyclingApp.Helper
         public MappingProfiles()
         {
             CreateMap<PlasticType, PlasticTypeDto>();
+            CreateMap<ContactType, ContactTypeDto>();
+            CreateMap<Contact, CContactDto>();
+            CreateMap<User, UserDto>();
+            CreateMap<UserAccount, CUserAccountDto>();
+
+            CreateMap<PlasticTypeDto, PlasticType>();
+            CreateMap<ContactTypeDto, ContactType>();
+            CreateMap<CContactDto, Contact>();
+            CreateMap<UserDto, User>();
+            CreateMap<CUserAccountDto, UserAccount>();
+
         }
     }
 }
