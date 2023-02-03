@@ -1,4 +1,6 @@
-﻿using DascoPlasticRecyclingApp.Interfaces;
+﻿using AutoMapper;
+using DascoPlasticRecyclingApp.Dto;
+using DascoPlasticRecyclingApp.Interfaces;
 using DascoPlasticRecyclingApp.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,16 +17,18 @@ namespace DascoPlasticRecyclingApp.Controllers
         //}
 
         private AppDbContext _context;
+        private readonly IMapper _mapper;
 
-        public PlasticTypeController(AppDbContext context) { 
+        public PlasticTypeController(AppDbContext context, IMapper mapper) { 
             _context= context;
+            _mapper = mapper;
         }
 
         [HttpGet]
         [ProducesResponseType(200, Type = typeof(IEnumerable<PlasticType>))]
-        public IActionResult GetPlasticTypes() { 
+        public IActionResult GetPlasticTypes() {
             //var plasticTypes = _plasticTypeRepository.GetPlasticTypes();
-            var plasticTypes = _context.PlasticTypes.OrderBy(p => p.Id).ToList();
+            var plasticTypes = _mapper.Map<List<PlasticTypeDto>>(_context.PlasticTypes.OrderBy(p => p.Id).ToList());
 
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -38,7 +42,7 @@ namespace DascoPlasticRecyclingApp.Controllers
             if (!_context.PlasticTypes.Any(p => p.Id == id))
                 return NotFound();
 
-            var plasticType = _context.PlasticTypes.Where(p => p.Id == id).FirstOrDefault();
+            var plasticType = _mapper.Map<PlasticType>(_context.PlasticTypes.Where(p => p.Id == id).FirstOrDefault());
             
             if(!ModelState.IsValid)
                 return BadRequest(ModelState);
