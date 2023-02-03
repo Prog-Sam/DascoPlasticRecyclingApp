@@ -7,6 +7,6 @@ namespace DascoPlasticRecyclingApp.Models
         public int Id { get; set; }
         [Required]
         public string Name { get; set; }
-        public ICollection<Contact> Contacts { get; set; }
+        //public ICollection<Contact> Contacts { get; set; }
     }
 }

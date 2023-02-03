@@ -12,7 +12,7 @@ namespace DascoPlasticRecyclingApp.Models
         public string Lastname { get; set; }
         [Required]
         public string Position { get; set; }
-        public ICollection<Contact> Contacts { get; set; }
-        public ICollection<UserAccount> UserAccounts { get; set; }
+        //public ICollection<Contact> Contacts { get; set; }
+        //public ICollection<UserAccount> UserAccounts { get; set; }
     }
 }
