@@ -2,13 +2,11 @@
 
 namespace DascoPlasticRecyclingApp.Dto
 {
-    public class UserAccountDto
+    public class CUserAccountDto
     {
         public int Id { get; set; }
         public string Username { get; set; }
-        public string Password { get; set; }
         public bool Admin { get; set; }
-        public int UserId { get; set; }
-        public int accessorId { get; set; }
+        public User User { get; set; }
     }
 }
