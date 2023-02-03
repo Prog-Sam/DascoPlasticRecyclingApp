@@ -74,7 +74,7 @@ namespace DascoPlasticRecyclingApp.Controllers
             if(!Accessor.Admin)
             {
                 ModelState.AddModelError("", "Only admin accounts can post here");
-                return StatusCode(405,ModelState);
+                return StatusCode(401,ModelState);
             }    
 
             var userAccount = new UserAccount
@@ -126,7 +126,7 @@ namespace DascoPlasticRecyclingApp.Controllers
             if (!Accessor.Admin)
             {
                 ModelState.AddModelError("", "Only admin accounts can update here");
-                return StatusCode(405, ModelState);
+                return StatusCode(401, ModelState);
             }
 
             var userAccountInDb = _context.UserAccounts.Where(p => p.Id == id).FirstOrDefault();
@@ -158,7 +158,7 @@ namespace DascoPlasticRecyclingApp.Controllers
             if(userAccountInDb.Admin == true)
             {
                 ModelState.AddModelError("", "Admin accounts cannot be deleted.");
-                return StatusCode(405, ModelState);
+                return StatusCode(401, ModelState);
             }
 
 
