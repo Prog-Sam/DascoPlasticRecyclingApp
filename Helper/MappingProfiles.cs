@@ -13,12 +13,14 @@ namespace DascoPlasticRecyclingApp.Helper
             CreateMap<Contact, CContactDto>();
             CreateMap<User, UserDto>();
             CreateMap<UserAccount, CUserAccountDto>();
+            CreateMap<UserAccount, SingleUserAccountDto>();
 
             CreateMap<PlasticTypeDto, PlasticType>();
             CreateMap<ContactTypeDto, ContactType>();
             CreateMap<CContactDto, Contact>();
             CreateMap<UserDto, User>();
             CreateMap<CUserAccountDto, UserAccount>();
+            CreateMap<SingleUserAccountDto, UserAccount>();
 
         }
     }

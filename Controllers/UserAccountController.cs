@@ -40,14 +40,14 @@ namespace DascoPlasticRecyclingApp.Controllers
         }
 
         [HttpGet("{id}")]
-        [ProducesResponseType(200, Type = typeof(CUserAccountDto))]
+        [ProducesResponseType(200, Type = typeof(SingleUserAccountDto))]
         [ProducesResponseType(404)]
         public IActionResult GetUserAccount(int id)
         {
             if (!_context.UserAccounts.Any(p => p.Id == id))
                 return NotFound();
 
-            var userAccount = _mapper.Map<CUserAccountDto>(_context.UserAccounts.Include(c => c.User).Where(p => p.Id == id).FirstOrDefault());
+            var userAccount = _mapper.Map<SingleUserAccountDto>(_context.UserAccounts.Include(c => c.User).Where(p => p.Id == id).FirstOrDefault());
 
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);

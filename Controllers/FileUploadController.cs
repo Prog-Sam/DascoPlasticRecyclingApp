@@ -8,10 +8,25 @@ using System.Threading.Tasks;
 [ApiController]
 public class FileUploadController : ControllerBase
 {
+    [HttpGet("{fileName}")]
+    public IActionResult GetImage(string fileName)
+    {
+        try
+        {
+            var path = Path.Combine(@"D:\Projects\Node\Actual\Dasco-Frontend\public\images", fileName);
+            var image = System.IO.File.OpenRead(path);
+            return File(image, "image/jpeg");
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
+    }
+
     [HttpPost]
     public async Task<IActionResult> UploadFile(IFormFile file)
     {
-        var uploadsFolder = Path.Combine("D:\\", "UploadFolder");
+        var uploadsFolder = Path.Combine(@"D:\Projects\Node\Actual\Dasco-Frontend\public", "images");
 
         if (!Directory.Exists(uploadsFolder))
         {
@@ -33,6 +48,7 @@ public class FileUploadController : ControllerBase
     [HttpDelete("{filePath}")]
     public IActionResult DeleteFile(string filePath)
     {
+
         if (System.IO.File.Exists(filePath))
         {
             System.IO.File.Delete(filePath);
