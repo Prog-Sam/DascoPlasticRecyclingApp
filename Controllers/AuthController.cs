@@ -51,5 +51,32 @@ namespace DascoPlasticRecyclingApp.Controllers
 
             return Ok(tokenString);
         }
+        [HttpPut("{id}")]
+        public IActionResult ChangePassDto(int id, [FromBody] ChangePasswordDto changePasswordDto)
+        {
+
+            if (changePasswordDto == null) return BadRequest("Change Password Info Missing.");
+
+            if (changePasswordDto.Id != id) return BadRequest("Id does not match with body's Id");
+
+            var userAccount = _context.UserAccounts.Where(u => u.Id == id).FirstOrDefault();
+
+            if(userAccount == null) return NotFound("Account not found.");
+
+            if(changePasswordDto.OldPassword != userAccount.Password) return BadRequest("Must input the current correct password.");
+
+            userAccount.Password = changePasswordDto.NewPassword;
+
+            var updated = _context.SaveChanges() > 0;
+
+            if (!updated)
+            {
+                ModelState.AddModelError("", "Something went wrong while updating");
+                return StatusCode(500, ModelState);
+            }
+
+            return Ok("Password Successfully updated.");
+
+        }
     }
 }
